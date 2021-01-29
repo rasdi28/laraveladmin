@@ -1,5 +1,5 @@
 @extends('main')
-@section('title', 'Dashboard')
+@section('title', 'EduLevels')
 @section('breadcrumbs')
 <div class="breadcrumbs">
   <div class="col-sm-4">
@@ -13,7 +13,10 @@
       <div class="page-header float-right">
           <div class="page-title">
               <ol class="breadcrumb text-right">
-                  <li class="active"><i class="fa fa-dashboard"></i></li>
+                  <li>
+                    <a href="#">Edulevels</a>
+                    <li class="active">Data</li>
+                  </li>
               </ol>
           </div>
       </div>
@@ -27,13 +30,18 @@
 <div class="content mt-3">
  
   <div class="animated fadeIn">
+    @if (session('status'))
+        <div class="alert alert-success">
+            {{ session('status') }}
+        </div>
+    @endif
     <div class="card">
       <div class="card-header">
         <div class="pull-left">
           <strong>Data Jenjang</strong>
         </div>
         <div class="pull-right">
-          <a href="" class="btn btn-success btn-sm">
+          <a href="/edulevels/add" class="btn btn-success btn-sm">
             <i class="fa fa-plus"></i> Add
           </a>
         </div>
@@ -44,8 +52,9 @@
             <tr>
               <th>No.</th>
               <th>Name</th>
-              <th>Desc</th>
-              <td></td>
+              <th>description</th>
+              <th></th>
+              
           </tr>
           </thead>
           <tbody>
@@ -54,7 +63,11 @@
               <td>{{$loop->iteration}}</td>
               <td>{{$item->name}}</td>
               <td>{{$item->desc}}</td>
-              <td></td>
+              <td class="text-center">
+                <a href="" class="btn btn-primary btn-sm">
+                  <i class="fa fa-pencil">Edit</i>
+                </a>
+              </td>
             </tr>
             @endforeach
             
