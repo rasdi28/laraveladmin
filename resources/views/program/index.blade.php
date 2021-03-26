@@ -5,7 +5,7 @@
   <div class="col-sm-4">
       <div class="page-header float-left">
           <div class="page-title">
-              <h1>Edulevels</h1>
+              <h1>Program</h1>
           </div>
       </div>
   </div>
@@ -14,7 +14,7 @@
           <div class="page-title">
               <ol class="breadcrumb text-right">
                   <li>
-                    <a href="#">Edulevels</a>
+                    <a href="#">Program</a>
                     <li class="active">Data</li>
                   </li>
               </ol>
@@ -41,7 +41,7 @@
           <strong>Data Jenjang</strong>
         </div>
         <div class="pull-right">
-          <a href="/edulevels/add" class="btn btn-success btn-sm">
+          <a href="/programs/add" class="btn btn-success btn-sm">
             <i class="fa fa-plus"></i> Add
           </a>
         </div>
@@ -51,18 +51,22 @@
           <thead>
             <tr>
               <th>No.</th>
-              <th>Name</th>
-              <th>description</th>
+              <th>Nama Program</th>
+              <th>Edulevels</th>
+              <th>Info</th>
+              <th>Info</th>
               <th></th>
               
           </tr>
           </thead>
           <tbody>
-            @foreach ($edulevels as $item)
+            @foreach ($programs as $item)
             <tr>
               <td>{{$loop->iteration}}</td>
               <td>{{$item->name}}</td>
-              <td>{{$item->desc}}</td>
+              <td>{{$item->edulevel_id}}</td>
+              <td>{{$item->info}}</td>
+
               <td class="text-center">
                 <a href="{{ url('edulevels/edit',$item->id) }}" class="btn btn-primary btn-sm">
                   <i class="fa fa-pencil">Edit</i>

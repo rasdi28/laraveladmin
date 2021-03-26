@@ -5,7 +5,7 @@
   <div class="col-sm-4">
       <div class="page-header float-left">
           <div class="page-title">
-              <h1>Edulevels</h1>
+              <h1>Edit</h1>
           </div>
       </div>
   </div>
@@ -15,7 +15,7 @@
               <ol class="breadcrumb text-right">
                   <li>
                     <a href="#">Edulevels</a>
-                    <li class="active">Add</li>
+                    <li class="active">Edit</li>
                   </li>
               </ol>
           </div>
@@ -44,18 +44,19 @@
       <div class="card-body">
         <div class="row">
           <div class="col-md-4 offset-md-4">
-            <form action="{{url('edulevels')}}" method="post">
+            <form action="{{url('edulevels/'.$edulevel->id)}}" method="post">
+                @method('patch')
               @csrf
               <div class="form-group">
                 <label >Jenjang</label>
-                <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}" autofocus >
+                <input type="text" name="name" value="{{ old('name', $edulevel->name) }}" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}" autofocus>
                 @error('name')
                 <div class="invalid-feedback"> {{ $message }}</div>
                 @enderror
               </div>
               <div class="form-group">
                 <label>Keterangan</label>
-                <textarea name="desc" class="form-control @error('desc') is-invalid @enderror"  >{{ old('desc') }}</textarea>
+                <textarea name="desc" class="form-control @error('desc') is-invalid @enderror"  >{{ old('desc',$edulevel->desc) }}</textarea>
                 @error('desc')
                 <div class="invalid-feedback"> {{ $message }}</div>
                 @enderror

@@ -24,10 +24,50 @@ class EdulevelController extends Controller
 
     public function addProcess(Request $request)
     {
+        $request->validate([
+            'name'=>'required|min:2',
+            'desc'=>'required'],[
+            'name.required'=>'Nama Jenjang Tidak Boleh Kosong'
+            
+        ]);
         DB::table('edulevels')->insert([
             'name' => $request->name,
             'desc' => $request->desc
         ]);
         return redirect('edulevels')->with('status', 'Jenjang berhasil ditambah');
     }
+    
+    public function edit($id)
+    {
+        //lempar data untuk menampilkan hasil edit
+        $edulevel = DB::table ('edulevels')-> where('id',$id)->first();
+
+        //dd jika ragu
+        // dd($edulevel);
+        return view('edulevels.edit',compact('edulevel'));
+    }
+
+    public function editProcess(Request $request, $id)
+    {
+        $request->validate([
+            'name'=>'required|min:2',
+            'desc'=>'required'],[
+                'name.required'=>'Nama Jenjang Tidak Boleh Kosong'
+            
+        ]);
+        DB::table ('edulevels')-> where('id',$id)
+        ->update([
+            'name'=> $request->name,
+            'desc'=>$request->desc
+        ]);
+        return redirect('edulevels')->with('status', 'Jenjang berhasil diupdate');
+
+    }
+
+    public function delete($id)
+    {
+        DB::table('edulevels')-> where('id',$id)->delete();
+        return redirect('edulevels')->with('status', 'Jenjang berhasil diHapus');
+    }
+
 }

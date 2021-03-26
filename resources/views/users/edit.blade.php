@@ -5,7 +5,7 @@
   <div class="col-sm-4">
       <div class="page-header float-left">
           <div class="page-title">
-              <h1>Edulevels</h1>
+              <h1>Edit</h1>
           </div>
       </div>
   </div>
@@ -14,8 +14,8 @@
           <div class="page-title">
               <ol class="breadcrumb text-right">
                   <li>
-                    <a href="#">Edulevels</a>
-                    <li class="active">Add</li>
+                    <a href="#">Users</a>
+                    <li class="active">Edit</li>
                   </li>
               </ol>
           </div>
@@ -33,7 +33,7 @@
     <div class="card">
       <div class="card-header">
         <div class="pull-left">
-          <strong>Tambah Jenjang</strong>
+          <strong>Edit Users</strong>
         </div>
         <div class="pull-right">
           <a href="/edulevels" class="btn btn-secondary btn-sm">
@@ -44,23 +44,23 @@
       <div class="card-body">
         <div class="row">
           <div class="col-md-4 offset-md-4">
-            <form action="{{url('edulevels')}}" method="post">
+            <form action="{{ url('users/'.$anggota->id) }}" method="post">
+                @method('patch')
               @csrf
               <div class="form-group">
-                <label >Jenjang</label>
-                <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}" autofocus >
-                @error('name')
-                <div class="invalid-feedback"> {{ $message }}</div>
-                @enderror
+                <label >Name</label>
+                <input type="text" name="name" value="{{ $anggota->name }}" class="form-control" autofocus required>
               </div>
               <div class="form-group">
-                <label>Keterangan</label>
-                <textarea name="desc" class="form-control @error('desc') is-invalid @enderror"  >{{ old('desc') }}</textarea>
-                @error('desc')
-                <div class="invalid-feedback"> {{ $message }}</div>
-                @enderror
+                <label >Email</label>
+                <input type="email" name="email" value="{{ $anggota->email }}" class="form-control" autofocus required>
               </div>
-              <button type="submit" class="btn btn-success">Add</button>
+              <div class="form-group">
+                <label >Jenjang</label>
+                <input type="text" name="jenjang" value="{{ $anggota->jenjang }}" class="form-control" autofocus required>
+              </div>
+              
+              <button type="submit" class="btn btn-success">Ubah</button>
             </form>
           </div>
         </div>

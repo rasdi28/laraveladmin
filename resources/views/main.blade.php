@@ -39,10 +39,13 @@
                         <a href="/home"> <i class="menu-icon fa fa-dashboard"></i>Home </a>
                     </li>
                     <li>
-                        <a href="/jenjang"> <i class="menu-icon fa fa-puzzle-piece"></i>Jenjang </a>
+                        <a href="{{url('edulevels')  }}"> <i class="menu-icon fa fa-puzzle-piece"></i>Jenjang </a>
                     </li>
                     <li>
-                        <a href="program"> <i class="menu-icon fa fa-puzzle-piece"></i>Program </a>
+                        <a href="{{ url('program') }}"> <i class="menu-icon fa fa-puzzle-piece"></i>Program </a>
+                    </li>
+                    <li>
+                        <a href="{{ url('users') }}"> <i class="menu-icon fa fa-users"></i>User </a>
                     </li>
                 </ul>
             </div><!-- /.navbar-collapse -->
@@ -89,7 +92,9 @@
                         </a>
                         <div class="user-menu dropdown-menu">
                             <a class="nav-link" href="#"><i class="fa fa -cog"></i>Settings</a>
-                            <a class="nav-link" href="#"><i class="fa fa-power -off"></i>Logout</a>
+                            
+
+                            <a class="nav-link" href=""><i class="fa fa-power -off"></i>Logout</a>
                         </div>
                     </div>
  
